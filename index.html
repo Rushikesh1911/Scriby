@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scriby – Mini Notion Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="light">
+  <header>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <button id="sidebarToggle" aria-label="Toggle Sidebar">☰</button>
+      <input id="appName" value="Scriby" placeholder="Workspace Name" style="font-weight:bold;font-size:1.3rem;background:transparent;border:none;outline:none;width:160px;" />
+    </div>
+    <div>
+      <button id="themeToggle" aria-label="Toggle Theme">🌙</button>
+      <button id="fullscreenBtn" title="Full Screen">⛶</button>
+      <button id="historyBtn" title="Version History">🕑</button>
+      <button id="exportBtn" title="Export Page">⬇️</button>
+    </div>
+    <div class="profile-menu">
+      <button id="profileBtn" aria-label="Profile">👤</button>
+      <div id="profileDropdown" class="dropdown">
+        <button id="settingsBtn">Settings</button>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+    <span id="savingIndicator" style="margin-left:1rem;font-size:0.95em;color:#888;display:none;">Saving...</span>
+  </header>
+  <nav class="sidebar">
+    <button id="newPageBtn">+ New Page</button>
+    <input type="search" id="searchInput" placeholder="Search pages..." />
+    <ul id="pagesList"></ul>
+    <div class="sidebar-footer">
+      <button id="collapseSidebarBtn" title="Collapse Sidebar">⮜</button>
+    </div>
+  </nav>
+  <div class="main-content">
+    <input id="pageTitle" value="Untitled" />
+    <div id="editorToolbar" class="editor-toolbar">
+      <button data-cmd="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+      <button data-cmd="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+      <button data-cmd="underline" title="Underline"><u>U</u></button>
+      <button data-cmd="insertUnorderedList" title="Bullet List">• List</button>
+      <button data-cmd="insertOrderedList" title="Numbered List">1.</button>
+      <button data-cmd="formatBlock" data-value="H1" title="Heading 1">H1</button>
+      <button data-cmd="formatBlock" data-value="H2" title="Heading 2">H2</button>
+      <button data-cmd="insertCodeBlock" title="Code Block">{ }</button>
+      <button data-cmd="insertCheckbox" title="Checkbox">☑️</button>
+      <button data-cmd="blockquote" title="Blockquote">❝</button>
+      <button onclick="document.execCommand('undo')" title="Undo (Ctrl+Z)">↺</button>
+      <button onclick="document.execCommand('redo')" title="Redo (Ctrl+Y)">↻</button>
+      <button id="clearFormattingBtn" title="Clear Formatting">🧹</button>
+      <button id="duplicatePageBtn" title="Duplicate Page">📄</button>
+    </div>
+    <div id="editor"></div>
+    <div id="historyModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h3>Version History</h3>
+        <ul id="historyList"></ul>
+        <button id="closeHistoryBtn">Close</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
